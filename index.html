@@ -1,0 +1,421 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0d12">
+  <meta name="description" content="Python development, Telegram bots and practical automation for small businesses.">
+  <title>Mykhailo — Python & Automation</title>
+
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --panel: #121620;
+      --text: #f4f6fb;
+      --muted: #9ba5b7;
+      --accent: #7c8cff;
+      --border: #252b3a;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1080px, 90%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(11, 13, 18, .88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a:hover, .text-link:hover { color: var(--accent); }
+
+    .hero {
+      min-height: 590px;
+      display: flex;
+      align-items: center;
+      padding: 90px 0;
+      background:
+        radial-gradient(ellipse at 80% 20%, #343a722c, transparent 45%);
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    h1 {
+      max-width: 800px;
+      margin: 18px 0;
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: 1.08;
+      letter-spacing: -3px;
+    }
+
+    h1 span {
+      background: linear-gradient(100deg, #a3adff, #76d5f7);
+      color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      max-width: 610px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 12px 20px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: .2s;
+    }
+
+    .button.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #090b13;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.12);
+    }
+
+    section { padding: 78px 0; }
+
+    .section-heading { margin-bottom: 32px; }
+
+    h2 {
+      margin: 8px 0;
+      font-size: clamp(28px, 4vw, 40px);
+      letter-spacing: -1px;
+    }
+
+    .section-heading p, .muted { color: var(--muted); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      padding: 28px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      transition: .2s;
+    }
+
+    .card:hover {
+      border-color: #656fba;
+      transform: translateY(-3px);
+    }
+
+    .project-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      background: #7c8cff18;
+      border-radius: 12px;
+      font-size: 24px;
+    }
+
+    .card h3 { margin: 20px 0 8px; font-size: 21px; }
+
+    .card p { color: var(--muted); }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 18px 0;
+    }
+
+    .tag {
+      padding: 5px 10px;
+      color: #c5cbff;
+      background: #7c8cff14;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+
+    .text-link { color: #a6b0ff; font-weight: 700; }
+
+    .services { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .service-number {
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .about-panel {
+      padding: 32px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: linear-gradient(120deg, #151a29, #10131b);
+    }
+
+    .contact {
+      text-align: center;
+      padding: 90px 0 100px;
+    }
+
+    .contact p {
+      max-width: 540px;
+      margin: 12px auto 28px;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 720px) {
+      .nav-links { gap: 12px; font-size: 12px; }
+      .hero { min-height: 500px; padding: 65px 0; }
+      h1 { letter-spacing: -2px; }
+      .grid, .services { grid-template-columns: 1fr; }
+      section { padding: 58px 0; }
+      .card { padding: 22px; }
+    }
+
+    @media (max-width: 390px) {
+      .nav-links { gap: 8px; }
+      .logo { font-size: 17px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="container">
+      <a class="logo" href="#home">MYKHA<span>.</span></a>
+      <div class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="eyebrow">Python · Telegram · Automation</div>
+        <h1>Simple ideas.<br><span>Useful digital products.</span></h1>
+        <p>
+          I build Telegram bots and practical digital tools that help
+          small businesses simplify everyday tasks and communicate
+          with their customers.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="#projects">Explore my work ↘</a>
+          <a class="button" href="#contact">Get in touch</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Selected work</div>
+          <h2>Projects I've built</h2>
+          <p>Practical projects built while learning and developing.</p>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <div class="project-icon">🤖</div>
+            <h3>Memo Trip</h3>
+            <p>
+              A Telegram bot for planning dates, voting on ideas,
+              finding matches and discovering budget-friendly activities.
+            </p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">aiogram</span>
+              <span class="tag">SQLite</span>
+              <span class="tag">Linux</span>
+            </div>
+            <a class="text-link"
+              href="https://github.com/cmsd579p82-boop/memo-trip"
+              target="_blank" rel="noopener noreferrer">
+              Explore repository ↗
+            </a>
+          </article>
+
+          <article class="card">
+            <div class="project-icon">💼</div>
+            <h3>BiznesBot Demo</h3>
+            <p>
+              A demo Telegram bot template for presenting business
+              services, prices, company information and contact options.
+            </p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">aiogram</span>
+              <span class="tag">Business</span>
+            </div>
+            <span class="muted">Demo in development</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">What I can help with</div>
+          <h2>Services</h2>
+          <p>Practical solutions for small businesses.</p>
+        </div>
+
+        <div class="grid services">
+          <article class="card">
+            <div class="service-number">01 / BOTS</div>
+            <h3>Telegram bots</h3>
+            <p>
+              Service menus, FAQs, contact buttons and simple
+              customer enquiry flows.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="service-number">02 / WEBSITES</div>
+            <h3>Landing pages</h3>
+            <p>
+              Clean one-page websites presenting your business,
+              services and contact information.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="service-number">03 / AUTOMATION</div>
+            <h3>Simple automation</h3>
+            <p>
+              Small tools that reduce repetitive work and make
+              everyday processes easier.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="about-panel">
+          <div class="eyebrow">A little about me</div>
+          <h2>Learning by building.</h2>
+          <p class="muted">
+            I'm Mykhailo, a beginner developer focused on Python,
+            Telegram bots and practical digital solutions. I learn
+            by building real projects, improving them and turning
+            useful ideas into working products.
+          </p>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">Git & GitHub</span>
+            <span class="tag">Telegram Bot API</span>
+            <span class="tag">HTML & CSS</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="eyebrow">Have an idea?</div>
+        <h2>Let's build something useful.</h2>
+        <p>
+          Need a simple Telegram bot or a landing page for your business?
+          Get in touch to discuss your idea and requirements.
+        </p>
+        <a class="button primary"
+          href="https://github.com/cmsd579p82-boop"
+          target="_blank" rel="noopener noreferrer">
+          Find me on GitHub ↗
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <span>© 2026 Mykhailo · Developer Portfolio</span>
+      <span>Built with HTML & CSS</span>
+    </div>
+  </footer>
+</body>
+</html>
